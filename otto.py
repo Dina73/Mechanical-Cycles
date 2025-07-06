@@ -1,3 +1,4 @@
+def main():
 import streamlit as st
 
 st.set_page_config(page_title="Otto Cycle Efficiency Simulator", layout="centered")
@@ -30,4 +31,4 @@ if st.button("Calculate"):
     col1.metric("T4", f"{T4:.2f} K")
 else:
     st.info("Enter values in the sidebar and click **Calculate** to simulate the cycle.")
-
+main()
