@@ -38,4 +38,6 @@ def main():
         col2.metric("Temperature 3", f"{T3:.2f} K")
         col1.metric("Temperature 4", f"{T4:.2f} K")
 
-streamlit run app.py
+streamlit run otto.py
+if __name__ == "__main__":
+    main()
