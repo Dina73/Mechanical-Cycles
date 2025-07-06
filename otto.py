@@ -38,5 +38,4 @@ def main():
         col2.metric("Temperature 3", f"{T3:.2f} K")
         col1.metric("Temperature 4", f"{T4:.2f} K")
 
-if name == "main":
-    main()
+streamlit run app.py
