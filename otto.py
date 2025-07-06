@@ -1,20 +1,16 @@
 import streamlit as st
 
-# App title
 st.set_page_config(page_title="Otto Cycle Efficiency Simulator", layout="centered")
 st.title("🔧 Otto Cycle Efficiency Simulator")
 
-# Constants
 gamma = 1.4
-cv = 0.718  # kJ/kg.K (specific heat capacity at constant volume)
+cv = 0.718  # kJ/kg.K
 
-# User inputs
 st.sidebar.header("Input Parameters")
 compression_ratio = st.sidebar.number_input("Compression Ratio (r)", min_value=1.0, value=8.0)
 heat_added = st.sidebar.number_input("Heat Added (Qh) [kJ/kg]", min_value=0.0, value=1000.0)
 T1 = st.sidebar.number_input("Initial Temperature T1 [K]", min_value=0.0, value=300.0)
 
-# Calculation
 if st.button("Calculate"):
     efficiency = 1 - (1 / (compression_ratio ** (gamma - 1)))
     T2 = T1 * (compression_ratio ** (gamma - 1))
@@ -23,7 +19,6 @@ if st.button("Calculate"):
     work_output = heat_added * efficiency
     heat_rejected = heat_added - work_output
 
-    # Results
     st.subheader("📊 Simulation Results")
     col1, col2 = st.columns(2)
     col1.metric("Efficiency", f"{efficiency:.4f}")
