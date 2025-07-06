@@ -37,5 +37,4 @@ def otto_cycle():
     st.write(f"Temperature 3: {T3:.2f} K")
     st.write(f"Temperature 4: {T4:.2f} K")
 
-if name == "main":
-    otto_cycle()
+streamlit run otto.py
