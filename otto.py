@@ -28,7 +28,7 @@ def main():
         P4=(R*T4)/V4
         heat_rejected=cv*(T4-T1)
         work_output = heat_added -heat_rejected
-        efficiency = work_output/heat_added
+        efficiency = (work_output/heat_added)*100
 
         st.subheader("📊 Simulation Results")
         col1, col2, col3, col4 = st.columns(4)
@@ -40,7 +40,7 @@ def main():
         col3.metric("P3", f"{P3:.2f} kPa")
         col4.metric("T4", f"{T4:.2f} K")
         col4.metric("P4", f"{P4:.2f} kPa")
-        col1.metric("Efficiency", f"{efficiency:.4f}")
+        col1.metric("Efficiency", f"{efficiency:.4f} %")
         col2.metric("Work Output", f"{work_output:.2f} kJ/kg")
         col3.metric("Heat Rejected", f"{heat_rejected:.2f} kJ/kg")
     else:
