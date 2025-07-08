@@ -11,7 +11,7 @@ def main():
 
     st.sidebar.header("Input Parameters")
     compression_ratio = st.sidebar.number_input("Compression Ratio (r)", min_value=1.0, value=8.0)
-    heat_added = st.sidebar.number_input("Heat Added (Qh) [kJ/kg]", min_value=0.0, value=1000.0)
+    heat_added = st.sidebar.number_input("Heat Added (Qin) [kJ/kg]", min_value=0.0, value=1000.0)
     T1 = st.sidebar.number_input("Initial Temperature T1 [K]", min_value=0.0)
     P1 = st.sidebar.number_input("Initial Pressure P1 [kPa]", min_value=0.0)
 
