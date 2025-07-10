@@ -20,7 +20,7 @@ def solve_diesel_cycle(r=None, V1=None, P1=None, T1=None, Qin=None, P3=None, T3=
         if r and V1 and T3 and T1:
             P1 = (R * T1) / V1
             V2 = V1 / r
-            P2 = P1 * r**k
+            P2 = P1 *(r**k)
             T2 = T1 * r**(k - 1)
             P3 = P2
             V3 = (R * T3) / P3
