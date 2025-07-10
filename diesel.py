@@ -10,13 +10,6 @@ def solve_diesel_cycle(r=None, V1_L=None, P1=None, T1=None, Qin=None, P3=None, T
         m = None
         V1_m3 = V1_L / 1000 if V1_L else None
         v1 = (R * T1) / P1 if T1 and P1 else V1_m3
-        if v1:
-            results["v1 [L/kg]"] = v1 * 1000
-            if V1_m3 and P1 and T1:
-                m = V1_m3 / v1
-                results["Mass [kg]"] = m
-                results["Total Volume V1 [L]"] = V1_L
-
         if r and T1 and T3:
             T2 = T1 * r**(k - 1)
             P2 = P1 * r**k if P1 else P3
