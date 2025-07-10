@@ -127,4 +127,4 @@ if st.button("🧪 Solve"):
         for key, val in result.items():
             st.metric(label=key, value=f"{val:.2f}")
     else:
-        st.warning("❗ Please provide more complete or valid inputs
+        st.warning("❗ Please provide more complete or valid inputs")
