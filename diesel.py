@@ -33,6 +33,7 @@ def solve_diesel_cycle(r=None, V1=None, P1=None, T1=None, Qin=None, P3=None, T3=
             eff = w_net / q_in
 
             results.update({
+                "P2 [kPa]": P2,
                 "T3 [K]": T3,
                 "P3 [kPa]": P3,
                 "T4 [K]": T4,
