@@ -17,7 +17,7 @@ def solve_diesel_cycle(r=None, V1=None, P1=None, T1=None, Qin=None, P3=None, T3=
             results["P2 [kPa]"] = P2
 
         # If T3 and T2 exist → estimate cutoff ratio, etc.
-        if r and V1 and Tmax and T1:
+        if r and V1 and T3 and T1:
             P1 = (R * T1) / V1
             V2 = V1 / r
             P2 = P1 * r**k
@@ -105,28 +105,30 @@ with col1:
 
 with col2:
     P1 = st.number_input("Initial Pressure P1 [kPa]", value=0.0)
-    P3 = st.number_input("Max Pressure P3 [kPa]", value=0.0) 
+    P3 = st.number_input("Max Pressure P3 [kPa]", value=0.0)
 
 with col3:
     T1 = st.number_input("Initial Temperature T1 [K]", value=0.0)
     T3 = st.number_input("Max Temperature T3 [K]", value=0.0)
 
 if st.button("🧪 Solve"):
-    result = solve_diesel_cycle(r=r if r > 0 else None,
-                                V1=V1 if V1 > 0 else None,
-                                P1=P1 if P1 > 0 else None,
-                                T1=T1 if T1 > 0 else None,
-                                Qin=Qin if Qin > 0 else None,
-                                P3=P3 if P3 > 0 else None,
-                                T3=T3 if T3 > 0 else None)
+    result = solve_diesel_cycle(
+        r=r if r > 0 else None,
+        V1=V1 if V1 > 0 else None,
+        P1=P1 if P1 > 0 else None,
+        T1=T1 if T1 > 0 else None,
+        Qin=Qin if Qin > 0 else None,
+        P3=P3 if P3 > 0 else None,
+        T3=T3 if T3 > 0 else None
+    )
 
-   if result:
-    st.success("✔️ Computed Results")
-    for key, val in result.items():
-        try:
-            st.metric(label=key, value=f"{float(val):.2f}")
-        except (ValueError, TypeError):
-            st.metric(label=key, value=str(val))
-else:
-    st.warning("❗ Please provide more complete or valid inputs to solve the cycle.")
+    if result:
+        st.success("✔️ Computed Results")
+        for key, val in result.items():
+            try:
+                st.metric(label=key, value=f"{float(val):.2f}")
+            except (ValueError, TypeError):
+                st.metric(label=key, value=str(val))
+    else:
+        st.warning("❗ Please provide more complete or valid inputs to solve the cycle.")
 
