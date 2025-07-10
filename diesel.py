@@ -18,18 +18,17 @@ def solve_diesel_cycle(r=None, V1=None, P1=None, T1=None, Qin=None, P3=None, T3=
 
         # If T3 and T2 exist → estimate cutoff ratio, etc.
         if r and V1 and T3 and T1:
-            V1_m3 = V1 / 1000  # ✅ Convert from L to m³
             if not P1:
                 P1 = (R * T1) / V1_m3
-            V2 = V1_m3 / r
+            V2 = V1 / r
             P2 = P1 * (r**k)
             T2 = T1 * r**(k - 1)
             P3 = P2
             V3 = (R * T3) / P3
             rc = V3 / V2
             q_in = cv * (T3 - T2)
-            T4 = T3 * (V3 / V1_m3)**(k - 1)
-            P4 = P3 * (V3 / V1_m3)**(k)
+            T4 = T3 * (V3 / V1)**(k - 1)
+            P4 = P3 * (V3 / V1)**(k)
             q_out = cv * (T4 - T1)
             w_net = q_in - q_out
             eff = w_net / q_in if q_in else 0
