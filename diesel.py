@@ -46,8 +46,6 @@ def solve_diesel_cycle(r=None, V1_L=None, P1=None, T1=None, Qin=None, P3=None, T
                     "Total Work [kJ]": w_net * m,
                     "Total Q_in [kJ]": q_in * m,
                     "Total Q_out [kJ]": q_out * m,
-                    "Total Volume V2 [L]": v2 * m * 1000,
-                    "Total Volume V3 [L]": v3 * m * 1000,
                 })
 
         elif P3 and T3 and P1 and T1:
