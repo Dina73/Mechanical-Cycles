@@ -41,13 +41,6 @@ def solve_diesel_cycle(r=None, V1_L=None, P1=None, T1=None, Qin=None, P3=None, T
               
             })
 
-            if m:
-                results.update({
-                    "Total Work [kJ]": w_net * m,
-                    "Total Q_in [kJ]": q_in * m,
-                    "Total Q_out [kJ]": q_out * m,
-                })
-
         elif P3 and T3 and P1 and T1:
             r = (P3 / P1)**(1 / k)
             return solve_diesel_cycle(r=r, V1_L=V1_L, P1=P1, T1=T1, P3=P3, T3=T3)
