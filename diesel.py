@@ -2,7 +2,7 @@ import streamlit as st
 
 def solve_diesel_cycle(r=None, V1=None, P1=None, T1=None, Qin=None, P3=None, T3=None):
     k = 1.4
-    R = 287  # kJ/kg.K
+    R = 0.2871  # kJ/kg.K
     cv = 0.718  # kJ/kg.K
     cp = 1.005  # kJ/kg.K
     results = {}
@@ -19,7 +19,7 @@ def solve_diesel_cycle(r=None, V1=None, P1=None, T1=None, Qin=None, P3=None, T3=
         # If T3 and T2 exist → estimate cutoff ratio, etc.
         if r and V1 and T3 and T1:
             if not P1:
-                P1 = (R * T1) / V1_m3
+                P1 = (R * T1) / V1
             V2 = V1 / r
             P2 = P1 * (r**k)
             T2 = T1 * r**(k - 1)
