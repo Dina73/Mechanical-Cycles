@@ -9,15 +9,16 @@ def solve_diesel_cycle(r=None, V1=None, P1=None, T1=None, Qin=None, P3=None, T3=
 
     try:
         # Estimate missing state variables
-       # if r and T1:
-       #     T2 = T1 * r**(k - 1)
-       #     results["T2 [K]"] = T2
-     #   if r and P1:
-      #      P2 = P1 * r**k
-      #      results["P2 [kPa]"] = P2
+        if r and T1:
+            T2 = T1 * r**(k - 1)
+            results["T2 [K]"] = T2
+        if r and P1:
+            P2 = P1 * r**k
+            results["P2 [kPa]"] = P2
 
         # If T3 and T2 exist → estimate cutoff ratio, etc.
         if r and V1 and T3 and T1:
+            V1 = V1 / 1000  # L to m³
             P1 = (R * T1) / V1
             V2 = V1 / r
             P2 = P1 *(r**k)
