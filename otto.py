@@ -12,7 +12,7 @@ def main():
     st.markdown("Input Parameters")
     
     col1, col2 = st.columns(2)
-    with col1:
+ with col1:
     compression_ratio = st.number_input("Compression Ratio (r)", min_value=1.0)
     heat_added = st.number_input("Heat Added (Qin) [kJ/kg]", min_value=0.0)
  with col2:
