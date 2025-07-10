@@ -36,10 +36,9 @@ def solve_diesel_cycle(r=None, V1_L=None, P1=None, T1=None, Qin=None, P3=None, T
             results.update({
                 "T2 [K]": T2, "T3 [K]": T3, "T4 [K]": T4,
                 "P2 [kPa]": P2, "P3 [kPa]": P3, "P4 [kPa]": P4,
-                "Cutoff Ratio (rc)": rc,
                 "Heat Added [kJ/kg]": q_in, "Heat Rejected [kJ/kg]": q_out,
                 "Net Work [kJ/kg]": w_net, "Efficiency [%]": eff * 100,
-                "v2 [L/kg]": v2 * 1000, "v3 [L/kg]": v3 * 1000
+              
             })
 
             if m:
@@ -72,11 +71,9 @@ def solve_diesel_cycle(r=None, V1_L=None, P1=None, T1=None, Qin=None, P3=None, T
             results.update({
                 "T2 [K]": T2, "T3 [K]": T3, "T4 [K]": T4,
                 "P2 [kPa]": P2, "P3 [kPa]": P2, "P4 [kPa]": P4,
-                "Cutoff Ratio (rc)": rc,
                 "Heat Rejected [kJ/kg]": q_out,
                 "Net Work [kJ/kg]": w_net,
                 "Efficiency [%]": eff * 100,
-                "v1 [L/kg]": v1 * 1000, "v2 [L/kg]": v2 * 1000, "v3 [L/kg]": v3 * 1000
             })
 
         return results if results else {"Error": "Insufficient or inconsistent inputs."}
