@@ -120,9 +120,13 @@ if st.button("🧪 Solve"):
                                 P3=P3 if P3 > 0 else None,
                                 T3=T3 if T3 > 0 else None)
 
-    if result:
-        st.success("✔️ Computed Results")
-        for key, val in result.items():
-            st.metric(label=key, value=f"{val:.2f}")
-    else:
-        st.warning("❗ Please provide more complete or valid inputs")
+   if result:
+    st.success("✔️ Computed Results")
+    for key, val in result.items():
+        try:
+            st.metric(label=key, value=f"{float(val):.2f}")
+        except (ValueError, TypeError):
+            st.metric(label=key, value=str(val))
+else:
+    st.warning("❗ Please provide more complete or valid inputs to solve the cycle.")
+
