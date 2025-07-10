@@ -28,7 +28,6 @@ def solve_diesel_cycle(r=None, V1=None, Tmax=None, P1=None, T1=None, Qin=None, P
             T4 = Tmax * (V3 / V1)**(k-1)
             P4 = P3 * (V3 / V1)**(k)
             q_out = cv * (T4 - T1) 
-            
             w_net = q_in - q_out
             eff= w_net / q_in
 
@@ -102,12 +101,12 @@ with col1:
     Qin = st.number_input("Heat Added Q_in [kJ/kg]", value=0.0)
 
 with col2:
-    P1 = st.number_input("Initial Pressure P1 [kPa]", value=0.0) * 1000
-    P3 = st.number_input("Max Pressure P3 [kPa]", value=0.0) * 1e6
+    P1 = st.number_input("Initial Pressure P1 [kPa]", value=0.0)
+    P3 = st.number_input("Max Pressure P3 [kPa]", value=0.0) 
     Tmax = st.number_input("Max Temperature Tmax [K]", value=0.0)
 
 with col3:
-    T1 = st.number_input("Initial Temperature T1 [°C or K]", value=0.0)
+    T1 = st.number_input("Initial Temperature T1 [K]", value=0.0)
     T3 = st.number_input("Post-combustion Temperature T3 [K]", value=0.0)
 
 if st.button("🧪 Solve"):
