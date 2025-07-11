@@ -19,7 +19,7 @@ def main():
         T1 = st.number_input("Initial Temperature T1 [K]", min_value=0.0)
         P1 = st.number_input("Initial Pressure P1 [kPa]", min_value=0.0)
 
-    if st.button("solve"):
+    if st.button("Solve"):
         V1=(R*T1)/P1
         V2=V1/ compression_ratio
         P2=P1/((1/ compression_ratio)**k)
