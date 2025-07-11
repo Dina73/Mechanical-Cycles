@@ -19,7 +19,7 @@ def main():
         T1 = st.number_input("Initial Temperature T1 [K]", min_value=0.0)
         P1 = st.number_input("Initial Pressure P1 [kPa]", min_value=0.0)
 
-    if st.button("Calculate"):
+    if st.button("Solve"):
         V1=(R*T1)/P1
         V2=V1/ compression_ratio
         P2=P1/((1/ compression_ratio)**k)
@@ -34,7 +34,7 @@ def main():
         work_output = heat_added -heat_rejected
         efficiency = (work_output/heat_added)*100
 
-        st.subheader("📊 Simulation Results")
+        st.subheader("✔️ Results")
         col1, col2, col3, col4 = st.columns(4)
         col1.metric("T1", f"{T1:.2f} K")
         col1.metric("P1", f"{P1:.2f} kPa")
