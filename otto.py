@@ -2,7 +2,7 @@ import streamlit as st
 
 def main():
     st.set_page_config(page_title="Otto Cycle Efficiency Simulator", layout="centered")
-    st.title("🔧 Otto Cycle Efficiency Simulator")
+    st.title("🔧 Otto Cycle Solver")
 
     k = 1.4
     cv = 0.718  # kJ/kg.K
