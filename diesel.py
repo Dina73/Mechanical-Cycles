@@ -3,7 +3,7 @@ import streamlit as st
 def solve_diesel_cycle(r=None, V1_L=None, P1=None, T1=None, Qin=None, P3=None, T3=None):
     k = 1.4
     R = 0.2871  # kJ/kg.K
-    cv, cp = 0.718, 1.005
+    cv, cp = 0.718, 1.005 # kJ/kg.K
     results = {}
 
     try:
