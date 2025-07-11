@@ -16,8 +16,10 @@ def solve_diesel_cycle(r=None, V1_L=None, P1=None, T1=None, Qin=None, P3=None, T
             v2 = v1 / r
             v3 = (R * T3) / P3
             rc = v3 / v2
+
             T4 = T3 * (v3 / v1)**(k - 1)
             P4 = P3 * (v3 / v1)**k
+
             q_in = cp * (T3 - T2)
             q_out = cv * (T4 - T1)
             w_net = q_in - q_out
@@ -122,5 +124,4 @@ if st.button("🧪 Solve"):
             if "T4 [K]" in result:
                 st.metric("T4 [K]", f"{result['T4 [K]']:.3f}")
             if "Net Work [kJ/kg]" in result:
-                 st.metric("Net Work [kJ/kg]", f"{result['Net Work [kJ/kg]']:.3f}")
-                
+                st.metric("Net Work [kJ/kg]", f"{result['Net Work [kJ/kg]']:.3f}")
