@@ -56,6 +56,7 @@ def solve_diesel_cycle(r=None, V1_L=None, P1=None, T1=None, Qin=None, P3=None, T
                 "Heat Rejected [kJ/kg]": q_out,
                 "Net Work [kJ/kg]": w_net,
                 "Efficiency [%]": eff * 100,
+                "Heat Added [kJ/kg]": Qin
             })
 
         return results if results else {"Error": "Insufficient or inconsistent inputs."}
