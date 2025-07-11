@@ -72,17 +72,17 @@ st.markdown("Enter known values. Leave others blank. The solver adapts according
 
 col1, col2, col3 = st.columns(3)
 with col1:
-    r = st.number_input("Compression Ratio (r)", min_value=0.0, format="%.2f")
-    V1 = st.number_input("Initial Volume V1 [L]", min_value=0.0, format="%.3f")
-    Qin = st.number_input("Heat Added Q_in [kJ/kg]", min_value=0.0, format="%.2f")
+    r = st.number_input("Compression Ratio (r)", min_value=0.0, format="%.1f")
+    V1 = st.number_input("Initial Volume V1 [L]", min_value=0.0, format="%.1f")
+    Qin = st.number_input("Heat Added Q_in [kJ/kg]", min_value=0.0, format="%.1f")
 
 with col2:
-    P1 = st.number_input("Initial Pressure P1 [kPa]", min_value=0.0, format="%.2f")
-    P3 = st.number_input("Max Pressure P3 [kPa]", min_value=0.0, format="%.2f")
+    P1 = st.number_input("Initial Pressure P1 [kPa]", min_value=0.0, format="%.1f")
+    P3 = st.number_input("Max Pressure P3 [kPa]", min_value=0.0, format="%.1f")
 
 with col3:
-    T1 = st.number_input("Initial Temperature T1 [K]", min_value=0.0, format="%.2f")
-    T3 = st.number_input("Max Temperature T3 [K]", min_value=0.0, format="%.2f")
+    T1 = st.number_input("Initial Temperature T1 [K]", min_value=0.0, format="%.1f")
+    T3 = st.number_input("Max Temperature T3 [K]", min_value=0.0, format="%.1f")
 
 if st.button("Solve"):
     result = solve_diesel_cycle(
