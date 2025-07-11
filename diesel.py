@@ -66,7 +66,7 @@ def solve_diesel_cycle(r=None, V1_L=None, P1=None, T1=None, Qin=None, P3=None, T
 
 # ---------- STREAMLIT UI ----------
 st.set_page_config("Diesel Cycle Solver", layout="centered")
-st.title("🧠 Diesel Cycle Smart Solver")
+st.title("🧠 Diesel Cycle Solver")
 
 st.markdown("Enter known values. Leave others blank. The solver adapts accordingly.")
 
