@@ -31,7 +31,6 @@ def solve_diesel_cycle(r=None, V1_L=None, P1=None, T1=None, Qin=None, P3=None, T
                 "P2 [kPa]": P2, "P3 [kPa]": P3, "P4 [kPa]": P4,
                 "Heat Added [kJ/kg]": q_in, "Heat Rejected [kJ/kg]": q_out,
                 "Net Work [kJ/kg]": w_net, "Efficiency [%]": eff * 100,
-              
             })
 
         elif P3 and T3 and P1 and T1:
@@ -95,6 +94,33 @@ if st.button("🧪 Solve"):
         st.error(f"❌ {result['Error']}")
     else:
         st.success("✔️ Results")
-        for key, val in result.items():
-            st.metric(label=key, value=f"{val:.3f}")
 
+        col1, col2, col3, col4 = st.columns(4)
+
+        with col1:
+            if P1: st.metric("P1 [kPa]", f"{P1:.2f}")
+            if T1: st.metric("T1 [K]", f"{T1:.2f}")
+            if "Heat Added [kJ/kg]" in result:
+                st.metric("Heat Added [kJ/kg]", f"{result['Heat Added [kJ/kg]']:.3f}")
+
+        with col2:
+            if "P2 [kPa]" in result:
+                st.metric("P2 [kPa]", f"{result['P2 [kPa]']:.3f}")
+            if "T2 [K]" in result:
+                st.metric("T2 [K]", f"{result['T2 [K]']:.3f}")
+            if "Heat Rejected [kJ/kg]" in result:
+                st.metric("Heat Rejected [kJ/kg]", f"{result['Heat Rejected [kJ/kg]']:.3f}")
+
+        with col3:
+            if "P3 [kPa]" in result:
+                st.metric("P3 [kPa]", f"{result['P3 [kPa]']:.3f}")
+            if "T3 [K]" in result:
+                st.metric("T3 [K]", f"{result['T3 [K]']:.3f}")
+            if "Efficiency [%]" in result:
+                st.metric("Efficiency [%]", f"{result['Efficiency [%]']:.2f} %")
+
+        with col4:
+            if "P4 [kPa]" in result:
+                st.metric("P4 [kPa]", f"{result['P4 [kPa]']:.3f}")
+            if "T4 [K]" in result:
+                st.metric("T4 [K]", f"{result['T4 [K]']:.3f}")
