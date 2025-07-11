@@ -66,7 +66,7 @@ def solve_diesel_cycle(r=None, V1_L=None, P1=None, T1=None, Qin=None, P3=None, T
 
 # ---------- STREAMLIT UI ----------
 st.set_page_config("Diesel Cycle Solver", layout="centered")
-st.title("🧠 Diesel Cycle Solver")
+st.title("🔧 Diesel Cycle Solver")
 
 st.markdown("Enter known values. Leave others blank. The solver adapts accordingly.")
 
@@ -84,7 +84,7 @@ with col3:
     T1 = st.number_input("Initial Temperature T1 [K]", min_value=0.0, format="%.2f")
     T3 = st.number_input("Max Temperature T3 [K]", min_value=0.0, format="%.2f")
 
-if st.button("🧪 Solve"):
+if st.button("Solve"):
     result = solve_diesel_cycle(
         r=r or None, V1_L=V1 or None, Qin=Qin or None,
         P1=P1 or None, P3=P3 or None, T1=T1 or None, T3=T3 or None
