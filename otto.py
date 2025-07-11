@@ -48,7 +48,7 @@ def main():
         col2.metric("Work Output", f"{work_output:.2f} kJ/kg")
         col3.metric("Heat Rejected", f"{heat_rejected:.2f} kJ/kg")
     else:
-        st.info("Enter values in the sidebar and click **Calculate** to simulate the cycle.")
+        st.info("Enter values and click **Solve** to simulate the cycle.")
 
 # ✅ Ensure Streamlit Cloud runs the app
 main()
