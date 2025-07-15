@@ -14,10 +14,10 @@ def main():
     col1, col2 = st.columns(2)
     with col1:
         r = st.number_input("Compression Ratio (r)", min_value=1.0)
-        P1 = st.number_input("Initial Pressure P1 [kPa]", min_value=0.0)
+        P1 = st.number_input("Initial Pressure P1 [bar]", min_value=0.0)
     with col2:
         T1 = st.number_input("Initial Temperature T1 [K]", min_value=0.0)
-        P3 = st.number_input("Max Pressure P3 [kPa]", min_value=0.0)
+        P3 = st.number_input("Max Pressure P3 [bar]", min_value=0.0)
 
     if st.button("Solve"):
         # State 1
@@ -54,13 +54,13 @@ def main():
         st.subheader("✔️ Results")
         col1, col2, col3, col4 = st.columns(4)
         col1.metric("T2", f"{T2:.2f} K")
-        col1.metric("P2", f"{P2:.2f} kPa")
+        col1.metric("P2", f"{P2:.2f} bar")
         col2.metric("T3", f"{T3:.2f} K")
-        col2.metric("P3", f"{P3:.2f} kPa")
+        col2.metric("P3", f"{P3:.2f} bar")
         col3.metric("T4", f"{T4:.2f} K")
-        col3.metric("P4", f"{P4:.2f} kPa")
+        col3.metric("P4", f"{P4:.2f} bar")
         col4.metric("T5", f"{T5:.2f} K")
-        col4.metric("P5", f"{P5:.2f} kPa")
+        col4.metric("P5", f"{P5:.2f} bar")
         col1.metric("Efficiency", f"{efficiency:.4f} %")
         col2.metric("Net Work", f"{w_net:.2f} kJ/kg")
         col3.metric("Heat Added", f"{q_in:.2f} kJ/kg")
