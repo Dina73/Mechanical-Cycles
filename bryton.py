@@ -16,7 +16,6 @@ def main():
     with col1:
         r_p = st.number_input("Pressure Ratio (P2/P1)", min_value=1.0)
         T1 = st.number_input("Inlet Temperature T1 [K]", min_value=200.0, value=300.0)
-        P1 = st.number_input("Inlet Pressure P1 [bar]", min_value=0.1, value=1.0)
     with col2:
         T3 = st.number_input("Max Temperature T3 [K]", min_value=500.0, value=1200.0)
 
