@@ -2,7 +2,7 @@ import streamlit as st
 
 def main():
     st.set_page_config(page_title="Brayton Cycle Efficiency Simulator", layout="centered")
-    st.title("🔥 Brayton Cycle Simulator")
+    st.title("🔧 Brayton Cycle Solver")
 
     k = 1.4
     cp = 1.005  # kJ/kg.K
@@ -20,8 +20,8 @@ def main():
         T3 = st.number_input("Max Temperature T3 [K]", min_value=0.0)
 
         if cycle_type == "Actual":
-            eta_c = st.slider("Compressor Efficiency [%]", 50.0, 100.0)
-            eta_t = st.slider("Turbine Efficiency [%]", 50.0, 100.0)
+            eta_c = st.slider("Compressor Efficiency [%]", 0.0, 100.0)
+            eta_t = st.slider("Turbine Efficiency [%]", 0.0, 100.0)
 
     if st.button("Solve"):
         
@@ -43,8 +43,6 @@ def main():
             col1.metric("T2 [K]", f"{T2:.2f}")
             col2.metric("T4 [K]", f"{T4:.2f}")
             col3.metric("Efficiency [%]", f"{efficiency:.2f}")
-
-           # col4, col5, col6 = st.columns(3)
             col1.metric("Net Work [kJ/kg]", f"{w_net:.2f}")
             col2.metric("Heat Added [kJ/kg]", f"{q_in:.2f}")
             col3.metric("Heat Rejected [kJ/kg]", f"{q_out:.2f}")
@@ -56,26 +54,24 @@ def main():
             T4s = T3 * (1 / r_p) ** ((k - 1) / k)
             
             # Actual Temperatures using efficiencies
-            T2 = T1 + (T2s - T1) / (eta_c / 100)
-            T4 = T3 - (T3 - T4s) * (eta_t / 100)
+            T2a = T1 + (T2s - T1) / (eta_c / 100)
+            T4a = T3 - (T3 - T4s) * (eta_t / 100)
 
             # Actual work and heat
-            w_c = cp * (T2 - T1)
-            w_t = cp * (T3 - T4)
+            w_c = cp * (T2a - T1)
+            w_t = cp * (T3 - T4a)
             w_net = w_t - w_c
-            q_in = cp * (T3 - T2)
-            q_out = cp * (T4 - T1)
+            q_in = cp * (T3 - T2a)
+            q_out = cp * (T4a - T1)
             efficiency = (w_net / q_in) * 100 if q_in else 0
 
             # Results display
             st.subheader("✅ Actual Brayton Cycle Results")
             col1, col2, col3, col4 = st.columns(4)
-            col1.metric("T2 [K]", f"{T2:.2f}")
-            col2.metric("T4 [K]", f"{T4:.2f}")
+            col1.metric("T2a [K]", f"{T2:.2f}")
+            col2.metric("T4a [K]", f"{T4:.2f}")
             col3.metric("Efficiency [%]", f"{efficiency:.2f}")
             col1.metric("Net Work [kJ/kg]", f"{w_net:.2f}")
-
-           # col5, col6 = st.columns(2)
             col2.metric("Heat Added [kJ/kg]", f"{q_in:.2f}")
             col3.metric("Heat Rejected [kJ/kg]", f"{q_out:.2f}")
 
