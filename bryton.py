@@ -67,9 +67,9 @@ def main():
 
             # Results display
             st.subheader("✅ Actual Brayton Cycle Results")
-            col1, col2, col3, col4 = st.columns(4)
-            col1.metric("T2a [K]", f"{T2:.2f}")
-            col2.metric("T4a [K]", f"{T4:.2f}")
+            col1, col2, col3 = st.columns(3)
+            col1.metric("T2a [K]", f"{T2a:.2f}")
+            col2.metric("T4a [K]", f"{T4a:.2f}")
             col3.metric("Efficiency [%]", f"{efficiency:.2f}")
             col1.metric("Net Work [kJ/kg]", f"{w_net:.2f}")
             col2.metric("Heat Added [kJ/kg]", f"{q_in:.2f}")
