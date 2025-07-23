@@ -60,9 +60,9 @@ def main():
             # Actual work and heat
             w_c = cp * (T2a - T1)
             w_t = cp * (T3 - T4a)
-            w_net = w_t - w_c
             q_in = cp * (T3 - T2a)
             q_out = cp * (T4a - T1)
+            w_net =  q_in - q_out
             efficiency = (w_net / q_in) * 100 if q_in else 0
 
             # Results display
