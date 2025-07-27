@@ -2,8 +2,9 @@ import streamlit as st
 
 def brayton(cycle, rp, T1, T3, T4=None, eta_c=None, eta_t=None, P_MW=None, m_kgph=None):
     r = {}
-    e_c = (eta_c or 100) / 100 if cycle == "Actual" else 1
-    e_t = (eta_t or 100) / 100 if cycle == "Actual" else 1
+    # Use given efficiencies or assume ideal (1)
+    e_c = eta_c / 100 if (cycle == "Actual" and eta_c not in (None, 0)) else 1
+    e_t = eta_t / 100 if (cycle == "Actual" and eta_t not in (None, 0)) else 1
     k = 1.4
     cp = 1.005
 
@@ -27,8 +28,8 @@ def brayton(cycle, rp, T1, T3, T4=None, eta_c=None, eta_t=None, P_MW=None, m_kgp
         r.update(m_kgps=m, P_kW=P, P_MW=P / 1000)
 
     if cycle == "Actual":
-        r['eta_c'] = eta_c if eta_c is not None else (T2s - T1) / (T2a - T1) * 100
-        r['eta_t'] = eta_t if eta_t is not None else (T3 - T4a) / (T3 - T4s) * 100
+        r['eta_c'] = eta_c if eta_c not in (None, 0) else (T2s - T1) / (T2a - T1) * 100
+        r['eta_t'] = eta_t if eta_t not in (None, 0) else (T3 - T4a) / (T3 - T4s) * 100
     return r
 
 def main():
@@ -52,7 +53,6 @@ def main():
        eta_t_input = st.number_input("Turbine η [%]", value=0.0)
        eta_c = eta_c_input if eta_c_input > 0 else None
        eta_t = eta_t_input if eta_t_input > 0 else None
-
 
     if st.button("Calculate"):
         r = brayton(cycle, rp, T1, T3, T4, eta_c, eta_t, P_MW, m_kgph)
@@ -91,9 +91,8 @@ def main():
         # Sixth row (Efficiencies for Actual)
         if cycle == "Actual":
             c16, c17, _ = st.columns(3)
-            c16.metric("Compressor η [%]", f"{(r.get('eta_c') or eta_c):.2f}")
-            c17.metric("Turbine η [%]", f"{(r.get('eta_t') or eta_t):.2f}")
-
+            c16.metric("Compressor η [%]", f"{r['eta_c']:.2f}")
+            c17.metric("Turbine η [%]", f"{r['eta_t']:.2f}")
 
 if __name__ == "__main__":
     main()
