@@ -38,9 +38,9 @@ def main():
     cycle = st.selectbox("Cycle Type", ["Ideal", "Actual"])
     col1, col2 = st.columns(2)
     with col1:
-        T1 = st.number_input("T1 [K]", value=300.0)
-        T3 = st.number_input("T3 [K]", value=1200.0)
-        rp = st.number_input("Pressure Ratio", value=10.0)
+        T1 = st.number_input("T1 [K]", value=0.0)
+        T3 = st.number_input("T3 [K]", value=0.0)
+        rp = st.number_input("Pressure Ratio", value=0.0)
         T4 = st.number_input("T4 [K]", value=0.0) or None
     with col2:
         P_MW = st.number_input("Net Power [MW]", value=0.0) or None
@@ -88,7 +88,7 @@ def main():
         # Sixth row (Efficiencies for Actual)
         if cycle == "Actual":
             if 'eta_c' in r or 'eta_t' in r:
-                c16, c17, _ = st.columns(3)
+                c16, c17 = st.columns(2)
                 if 'eta_c' in r:
                     c16.metric("Compressor η [%]", f"{r['eta_c']:.2f}")
                 if 'eta_t' in r:
