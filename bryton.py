@@ -48,8 +48,11 @@ def main():
         eta_c = eta_t = None
 
     if cycle == "Actual":
-        eta_c = st.number_input("Compressor η [%]", value=0.0)
-        eta_t = st.number_input("Turbine η [%]", value=0.0)
+       eta_c_input = st.number_input("Compressor η [%]", value=0.0)
+       eta_t_input = st.number_input("Turbine η [%]", value=0.0)
+       eta_c = eta_c_input if eta_c_input > 0 else None
+       eta_t = eta_t_input if eta_t_input > 0 else None
+
 
     if st.button("Calculate"):
         r = brayton(cycle, rp, T1, T3, T4, eta_c, eta_t, P_MW, m_kgph)
