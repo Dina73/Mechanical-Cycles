@@ -45,9 +45,9 @@ def main():
     with col1:
         T1 = st.number_input("T1 [K]", value=0.0)
         T3 = st.number_input("T3 [K]", value=0.0)
-        rp = st.number_input("Pressure Ratio", value=0.0)
         T4 = st.number_input("T4 [K]", value=0.0) or None
     with col2:
+        rp = st.number_input("Pressure Ratio", value=0.0)
         P_MW = st.number_input("Net Power [MW]", value=0.0) or None
         m_kgph = st.number_input("Mass Flow [kg/hr]", value=0.0) or None
         eta_c = eta_t = None
