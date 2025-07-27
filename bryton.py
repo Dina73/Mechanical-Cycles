@@ -26,7 +26,7 @@ def brayton(cycle, rp, T1, T3, T4=None, eta_c=None, eta_t=None, P_MW=None, m_kgp
         wnet = (P_MW * 1000) / 3600
         wc = wt - wnet
         T2a = (wc / cp) + T1
-        eta_c = (cp * (T2s - T1)) / wc
+        eta_c = ((cp * (T2s - T1)) / wc) * 100
         qin = cp * (T3 - T2a)
         m_kgps = m_kgph / 3600
         r.update(w_net=wnet, w_c=wc, P_MW=P_MW, q_in=qin, T2a=T2a, m_kgps=m_kgps)
