@@ -87,10 +87,9 @@ def main():
 
         # Fifth row (Power & Mass Flow)
         if 'P_MW' in r:
-            c13, c14, c15 = st.columns(3)
+            c13, c14 = st.columns(2)
             c13.metric("Mass Flow [kg/s]", f"{r['m_kgps']:.2f}")
-            c14.metric("Net Power [kW]", f"{r['P_kW']:.2f}")
-            c15.metric("Net Power [MW]", f"{r['P_MW']:.2f}")
+            c14.metric("Net Power [MW]", f"{r['P_MW']:.2f}")
 
         # Sixth row (Efficiencies for Actual)
         if cycle == "Actual":
