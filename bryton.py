@@ -1,9 +1,11 @@
 import streamlit as st
 
-def brayton(cycle, rp, T1, T3, T4=None, eta_c=None, eta_t=None, P_MW=None, m_kgph=None, cp=1.005, k=1.4):
+def brayton(cycle, rp, T1, T3, T4=None, eta_c=None, eta_t=None, P_MW=None, m_kgph=None):
     r = {}
     e_c = (eta_c or 100)/100 if cycle == "Actual" else 1
     e_t = (eta_t or 100)/100 if cycle == "Actual" else 1
+    k = 1.4
+    cp = 1.005
 
     T2s = T1 * rp ** ((k - 1) / k)
     T4s = T3 / rp ** ((k - 1) / k)
@@ -34,6 +36,7 @@ def main():
     st.title("🔧 Brayton Cycle Solver")
 
     cycle = st.selectbox("Cycle Type", ["Ideal", "Actual"])
+    
     T1 = st.number_input("T1 [K]", value=300.0)
     T3 = st.number_input("T3 [K]", value=1200.0)
     rp = st.number_input("Pressure Ratio", value=10.0)
@@ -43,11 +46,8 @@ def main():
     eta_c = eta_t = None
 
     if cycle == "Actual":
-        eta_c = st.number_input("Compressor η [%]", value=85.0)
-        eta_t = st.number_input("Turbine η [%]", value=88.0)
-
-    cp = st.number_input("Cp [kJ/kg.K]", value=1.005)
-    k = st.number_input("k (γ)", value=1.4)
+        eta_c = st.number_input("Compressor η [%]", value=0.0)
+        eta_t = st.number_input("Turbine η [%]", value=0.0)
 
     if st.button("Calculate"):
         r = brayton(cycle, rp, T1, T3, T4, eta_c, eta_t, P_MW, m_kgph, cp, k)
