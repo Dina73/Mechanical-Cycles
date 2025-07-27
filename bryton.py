@@ -36,7 +36,7 @@ def main():
     st.title("🔧 Brayton Cycle Solver")
 
     cycle = st.selectbox("Cycle Type", ["Ideal", "Actual"])
-    
+    col1, col2 = st.columns(2)
     T1 = st.number_input("T1 [K]", value=300.0)
     T3 = st.number_input("T3 [K]", value=1200.0)
     rp = st.number_input("Pressure Ratio", value=10.0)
