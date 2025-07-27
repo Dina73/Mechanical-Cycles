@@ -23,13 +23,12 @@ def brayton(cycle, rp, T1, T3, T4=None, eta_c=None, eta_t=None, P_MW=None, m_kgp
              w_c=wc, w_t=wt, w_net=wnet, q_in=qin, q_out=qout, eff=eff)
 
     if P_MW or m_kgph:
-        wnet = (P_MW * 1000) / 3600
+        wnet = (P_MW * 1000) / (m_kgph / 3600)
         wc = wt - wnet
         T2a = (wc / cp) + T1
         eta_c = ((cp * (T2s - T1)) / wc) * 100
         qin = cp * (T3 - T2a)
-        m_kgps = m_kgph / 3600
-        r.update(w_net=wnet, w_c=wc, P_MW=P_MW, q_in=qin, T2a=T2a, m_kgps=m_kgps)
+        r.update(w_net=wnet, w_c=wc, q_in=qin, T2a=T2a)
 
     if cycle == "Actual":
         r['eta_c'] = eta_c if eta_c not in (None, 0) else (T2s - T1) / (T2a - T1) * 100
@@ -85,15 +84,9 @@ def main():
         c11.metric("q_out [kJ/kg]", f"{r['q_out']:.2f}")
         c12.metric("Efficiency [%]", f"{r['eff']:.2f}")
 
-        # Fifth row (Power & Mass Flow)
-        if 'P_MW' in r:
-            c13, c14 = st.columns(2)
-            c13.metric("Mass Flow [kg/s]", f"{r['m_kgps']:.2f}")
-            c14.metric("Net Power [MW]", f"{r['P_MW']:.2f}")
-
-        # Sixth row (Efficiencies for Actual)
+        # Fifth row (Efficiencies for Actual)
         if cycle == "Actual":
-            c16, c17, _ = st.columns(3)
+            c16, c17 = st.columns(2)
             c16.metric("Compressor η [%]", f"{r['eta_c']:.2f}")
             c17.metric("Turbine η [%]", f"{r['eta_t']:.2f}")
 
