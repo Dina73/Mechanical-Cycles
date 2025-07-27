@@ -52,7 +52,7 @@ def main():
         eta_t = st.number_input("Turbine η [%]", value=0.0)
 
     if st.button("Calculate"):
-        r = brayton(cycle, rp, T1, T3, T4, eta_c, eta_t, P_MW, m_kgph, cp, k)
+        r = brayton(cycle, rp, T1, T3, T4, eta_c, eta_t, P_MW, m_kgph)
         for k, v in r.items():
             st.write(f"**{k}**: {v:.2f}")
 
