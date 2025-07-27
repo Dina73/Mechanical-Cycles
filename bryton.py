@@ -27,8 +27,8 @@ def brayton(cycle, rp, T1, T3, T4=None, eta_c=None, eta_t=None, P_MW=None, m_kgp
         r.update(m_kgps=m, P_kW=P, P_MW=P / 1000)
 
     if cycle == "Actual":
-        if eta_c is None: r['eta_c'] = (T2s - T1) / (T2a - T1) * 100
-        if eta_t is None: r['eta_t'] = (T3 - T4a) / (T3 - T4s) * 100
+        r['eta_c'] = eta_c if eta_c is not None else (T2s - T1) / (T2a - T1) * 100
+        r['eta_t'] = eta_t if eta_t is not None else (T3 - T4a) / (T3 - T4s) * 100
     return r
 
 def main():
