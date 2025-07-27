@@ -35,6 +35,7 @@ def brayton(cycle, rp, T1, T3, T4=None, eta_c=None, eta_t=None, P_MW=None, m_kgp
         r['eta_t'] = eta_t if eta_t not in (None, 0) else (T3 - T4a) / (T3 - T4s) * 100
     return r
 
+
 def main():
     st.set_page_config(page_title="Brayton Cycle Solver", layout="centered")
     st.title("🔧 Brayton Cycle Solver")
@@ -52,16 +53,17 @@ def main():
         eta_c = eta_t = None
 
     if cycle == "Actual":
-       eta_c_input = st.number_input("Compressor η [%]", value=0.0)
-       eta_t_input = st.number_input("Turbine η [%]", value=0.0)
-       eta_c = eta_c_input if eta_c_input > 0 else None
-       eta_t = eta_t_input if eta_t_input > 0 else None
+        eta_c_input = st.number_input("Compressor η [%]", value=0.0)
+        eta_t_input = st.number_input("Turbine η [%]", value=0.0)
+        eta_c = eta_c_input if eta_c_input > 0 else None
+        eta_t = eta_t_input if eta_t_input > 0 else None
 
     if st.button("Calculate"):
         r = brayton(cycle, rp, T1, T3, T4, eta_c, eta_t, P_MW, m_kgph)
 
         c1, c2, c3 = st.columns(3)
-         if cycle == "Ideal":
+
+        if cycle == "Ideal":
             c1.metric("T1 [K]", f"{r['T1']:.2f}")
             c2.metric("T2s [K]", f"{r['T2s']:.2f}")
             c3.metric("T3 [K]", f"{r['T3']:.2f}")
@@ -73,7 +75,6 @@ def main():
             c3.metric("q_out [kJ/kg]", f"{r['q_out']:.2f}")
             c1.metric("Efficiency [%]", f"{r['eff']:.2f}")
 
-        # Efficiencies for Actual
         if cycle == "Actual":
             c1.metric("T1 [K]", f"{r['T1']:.2f}")
             c2.metric("T2s [K]", f"{r['T2s']:.2f}")
@@ -89,6 +90,7 @@ def main():
             c3.metric("Efficiency [%]", f"{r['eff']:.2f}")
             c1.metric("Compressor η [%]", f"{r['eta_c']:.2f}")
             c2.metric("Turbine η [%]", f"{r['eta_t']:.2f}")
+
 
 if __name__ == "__main__":
     main()
