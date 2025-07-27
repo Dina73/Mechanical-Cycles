@@ -23,9 +23,12 @@ def brayton(cycle, rp, T1, T3, T4=None, eta_c=None, eta_t=None, P_MW=None, m_kgp
              w_c=wc, w_t=wt, w_net=wnet, q_in=qin, q_out=qout, eff=eff)
 
     if P_MW or m_kgph:
-        m = (m_kgph or (P_MW * 1000 / wnet)) / 3600
-        P = wnet * m
-        r.update(m_kgps=m, P_kW=P, P_MW=P / 1000)
+        wnet = (P_MW * 1000) / 3600
+        wc = wt - wnet
+        T2a = (wc / cp) + T1
+        eta_c = (cp * (T2s - T1)) / wc
+        qin = cp * (T3 - T2a)
+        r.update(w_net=wnet, w_c=wc, P_MW=P_MW, q_in=qin, T2a=T2a)
 
     if cycle == "Actual":
         r['eta_c'] = eta_c if eta_c not in (None, 0) else (T2s - T1) / (T2a - T1) * 100
