@@ -68,27 +68,27 @@ def main():
 
         # Second row of 3 columns
         c4, c5, c6 = st.columns(3)
-        c4.metric("T3 [K]", f"{r['T3']:.2f}")
-        c5.metric("T4s [K]", f"{r['T4s']:.2f}")
-        c6.metric("T4a [K]", f"{r['T4a']:.2f}")
+        c1.metric("T3 [K]", f"{r['T3']:.2f}")
+        c2.metric("T4s [K]", f"{r['T4s']:.2f}")
+        c3.metric("T4a [K]", f"{r['T4a']:.2f}")
 
         # Third row of 3 columns
         c7, c8, c9 = st.columns(3)
-        c7.metric("w_c [kJ/kg]", f"{r['w_c']:.2f}")
-        c8.metric("w_t [kJ/kg]", f"{r['w_t']:.2f}")
-        c9.metric("w_net [kJ/kg]", f"{r['w_net']:.2f}")
+        c1.metric("w_c [kJ/kg]", f"{r['w_c']:.2f}")
+        c2.metric("w_t [kJ/kg]", f"{r['w_t']:.2f}")
+        c3.metric("w_net [kJ/kg]", f"{r['w_net']:.2f}")
 
         # Fourth row of 3 columns
         c10, c11, c12 = st.columns(3)
-        c10.metric("q_in [kJ/kg]", f"{r['q_in']:.2f}")
-        c11.metric("q_out [kJ/kg]", f"{r['q_out']:.2f}")
-        c12.metric("Efficiency [%]", f"{r['eff']:.2f}")
+        c1.metric("q_in [kJ/kg]", f"{r['q_in']:.2f}")
+        c2.metric("q_out [kJ/kg]", f"{r['q_out']:.2f}")
+        c3.metric("Efficiency [%]", f"{r['eff']:.2f}")
 
         # Fifth row (Efficiencies for Actual)
         if cycle == "Actual":
             c16, c17 = st.columns(2)
-            c16.metric("Compressor η [%]", f"{r['eta_c']:.2f}")
-            c17.metric("Turbine η [%]", f"{r['eta_t']:.2f}")
+            c1.metric("Compressor η [%]", f"{r['eta_c']:.2f}")
+            c2.metric("Turbine η [%]", f"{r['eta_t']:.2f}")
 
 if __name__ == "__main__":
     main()
