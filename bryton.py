@@ -87,7 +87,7 @@ def main():
 
         # Sixth row (Efficiencies for Actual)
         if cycle == "Actual":
-            if 'eta_c' in r or 'eta_t' in r:
+           # if 'eta_c' in r or 'eta_t' in r:
                 c16, c17, _ = st.columns(3)
                 if 'eta_c' in r:
                     c16.metric("Compressor η [%]", f"{r['eta_c']:.2f}")
