@@ -5,13 +5,13 @@ st.set_page_config(page_title="Rankine Cycle Solver", layout="centered")
 st.title("🔧 Rankine Cycle Solver (Ideal & Actual)")
 
 # --- Inputs ---
-P1 = st.number_input("Condenser Pressure (MPa)", 0.01, 1.0, 0.01)
-P2 = st.number_input("Boiler Pressure (MPa)", 1.0, 20.0, 8.0)
-T3 = st.number_input("Turbine Inlet Temperature (°C)", 100, 800, 500)
-eta_t = st.number_input("Turbine Isentropic Efficiency (%)", 0.0, 100.0, 100.0) / 100
-eta_p = st.number_input("Pump Isentropic Efficiency (%)", 0.0, 100.0, 100.0) / 100
-power = st.number_input("Net Power Output (MW)", 0.0, 500.0, 0.0)
-m_dot = st.number_input("Mass Flow Rate (kg/s)", 0.0, 500.0, 0.0)
+P1 = st.number_input("Condenser Pressure (MPa)",  min_value=0.0)
+P2 = st.number_input("Boiler Pressure (MPa)",  min_value=0.0)
+T3 = st.number_input("Turbine Inlet Temperature (°C)",  min_value=0.0)
+eta_t = st.number_input("Turbine Isentropic Efficiency (%)",  min_value=0.0) / 100
+eta_p = st.number_input("Pump Isentropic Efficiency (%)",  min_value=0.0) / 100
+power = st.number_input("Net Power Output (MW)",  min_value=0.0)
+m_dot = st.number_input("Mass Flow Rate (kg/s)",  min_value=0.0)
 
 # --- Calculate button ---
 if st.button("Calculate"):
@@ -63,4 +63,5 @@ if st.button("Calculate"):
         (st4.P, st4.T - 273.15, h4, st4.s),
     ], start=1):
         st.write(f"State {i}: P={P:.2f} MPa, T={T:.2f} °C, h={h:.2f} kJ/kg, s={s:.4f} kJ/kg.K")
+
 
