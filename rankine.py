@@ -14,7 +14,7 @@ power = st.number_input("Net Power Output (MW)",  min_value=0.0)
 m_dot = st.number_input("Mass Flow Rate (kg/s)",  min_value=0.0)
 
 # --- Calculate button ---
-if st.button("Calculate"):
+if st.button("Solve"):
     # --- State 1: Condenser outlet (saturated liquid) ---
     st1 = IAPWS97(P=P1, x=0)
     h1, s1 = st1.h, st1.s
@@ -63,5 +63,6 @@ if st.button("Calculate"):
         (st4.P, st4.T - 273.15, h4, st4.s),
     ], start=1):
         st.write(f"State {i}: P={P:.2f} MPa, T={T:.2f} °C, h={h:.2f} kJ/kg, s={s:.4f} kJ/kg.K")
+
 
 
