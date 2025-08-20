@@ -107,7 +107,7 @@ def brayton_cycle():
 
 # ================== RANKINE ==================
 def rankine_cycle():
-    st.subheader("♨️ Rankine Cycle Solver (Ideal & Actual)")
+    st.subheader("🔧 Rankine Cycle Solver (Ideal & Actual)")
     P1 = st.number_input("Condenser Pressure (MPa)", 0.01, 1.0, 0.01, key="rP1")
     P2 = st.number_input("Boiler Pressure (MPa)", 1.0, 20.0, 0.1, key="rP2")
     T3 = st.number_input("Turbine Inlet Temp (°C)", 100.0, 600.0, 1.0, key="rT3")
@@ -132,7 +132,7 @@ def rankine_cycle():
 # ================== MAIN APP ==================
 def main():
     st.set_page_config(page_title="Thermodynamic Cycle Simulator", layout="centered")
-    st.title("♨️ Thermodynamic Cycle Simulator")
+    st.title("🔧 Thermodynamic Cycle Simulator")
 
     cycle = st.selectbox("Select Cycle", 
                          ["Otto", "Diesel", "Dual", "Brayton", "Rankine"])
@@ -150,3 +150,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
