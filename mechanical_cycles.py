@@ -1,7 +1,6 @@
 import streamlit as st
 from math import log
 from iapws import IAPWS97
-from CoolProp.CoolProp import PropsSI
 
 # ================== OTTO ==================
 def otto_cycle():
@@ -150,4 +149,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
