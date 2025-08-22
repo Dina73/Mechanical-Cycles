@@ -2,8 +2,8 @@ import streamlit as st
 from iapws import IAPWS97
 
 # --- Global page configuration for the entire app ---
-st.set_page_config(page_title="Thermodynamic Cycle Solver", layout="centered")
-st.title("⚙️ Combined Thermodynamic Cycle Solver")
+st.set_page_config(page_title="Mechanical Cycles Solver", layout="centered")
+st.title("⚙️ Combined Mechanical Cycles Solver")
 
 # --- Function to handle the Brayton Cycle logic and UI ---
 def brayton_cycle_app():
@@ -428,4 +428,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
